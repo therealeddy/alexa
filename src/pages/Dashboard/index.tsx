@@ -4,7 +4,7 @@ import { ButtonVoice } from '../../components';
 
 import { Container } from './styles';
 
-import { afirmativoAudio, disposicaoAudio, musicaAudio } from '../../audios';
+import { afirmativoAudio, disposicaoAudio, musicaAudio, erradoAudio } from '../../audios';
 
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -26,7 +26,6 @@ interface MusicResponse {
 const SignIn: React.FC = () => {
 
   const [active, setActive] = useState(false);
-  const [music, setMusic] = useState('');
   const [idMusic, setIdMusic] = useState('');
 
   const commands = [
@@ -42,20 +41,34 @@ const SignIn: React.FC = () => {
       callback: () => {
         setActive(false);
         setIdMusic('');
-        setMusic('');
         new Audio(afirmativoAudio).play();
       },
     },
     {
       command: "tocar música *",
       callback: (music: string) => {
-        if(active) {
-          setMusic(music)
-
-          new Audio(musicaAudio).play();
+        if(active && music) {
+          const getData = async () => {
+            try {
+              const response = await api.get<MusicResponse>('/v1/search',{
+                params: {
+                  q: music,
+                  type: 'track'
+                },
+              });
+              
+              setIdMusic(response.data.tracks.items[0].id)
+              
+              new Audio(musicaAudio).play();
+            } catch (ex) {
+              new Audio(erradoAudio).play();
+            }
+          }
+          
+          getData();
         }
 
-        setActive(false)
+        setActive(false);
       },
     },
   ];
@@ -69,24 +82,6 @@ const SignIn: React.FC = () => {
   }
 
   const { listening } = useSpeechRecognition({ commands });
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await api.get<MusicResponse>('/v1/search',{
-        params: {
-          q: music,
-          type: 'track'
-        },
-      });
-
-      setIdMusic(response.data.tracks.items[0].id)
-    }
-    
-    if (music) {
-      getData()
-      setMusic('')
-    }
-  }, [music])
 
   useEffect(() => {
     SpeechRecognition.startListening({

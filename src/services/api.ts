@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = 'BQANR_G4BFOZVLVMNcAVfhMzAIbpuGHemdpFNLf3MtVsLl-56U2zlzTlkpeANNkBBmF9oHTQicVnTRFChBFvAsfhUyVpLZh-1JJXVX3eE_4wF_hZ35Tprp0uL0jpkUEdbH8MpSIS75dtvpfbq1mh4tChNdOt3GSi8vL8olkuhZ4Bgi9jHdu75Ss'
+const token = 'BQBJxkeJImn8vqGn4rrHMqYOr-HygmiAI_gvWg3aN5qXGAhFBzhTNKRxprc9GIT8Od9_ey3n8MI9_HYiLEHnl3JebyO1TQDsBCkCQsk884jcRJgp7XzyI98-3ONCYE9z9ZyBOYr93oSsE7GqXrD9qPvQaScpY8KhUTviT7mq9yS3zTMVGaBBjuw'
 
 const api = axios.create({
   baseURL: 'https://api.spotify.com',
