@@ -21,17 +21,7 @@ import api from './services/api'
 
 import GlobalStyle from './styles/global'
 import { tinyStrToArray } from './utils/tinyStrToArray'
-
-interface MusicResponse {
-  tracks: {
-    items: {
-      external_urls: {
-        spotify: string
-      }
-      id: string
-    }[]
-  }
-}
+import { MusicResponse } from './services/types'
 
 function App() {
   const [logged, setLogged] = useState(false)
