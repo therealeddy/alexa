@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
   * {
@@ -6,6 +6,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
   }
 
   *::before,
@@ -30,4 +31,4 @@ export default createGlobalStyle`
     cursor: pointer;
     outline: none;
   }
-`;
+`

@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
-import alexaIcon from '../../images/alexa-icon.svg';
+import alexaIcon from '../../images/alexa-icon.svg'
 
 interface ButtonVoiceProps {
-  active: boolean
+  $active: boolean
   onClick: () => void
 }
 
-const ButtonVoice: React.FC<ButtonVoiceProps> = ({ active, onClick }) => {
+const ButtonVoice: React.FC<ButtonVoiceProps> = ({ $active, onClick }) => {
   return (
-    <Container active={active}>
+    <Container $active={$active}>
       <button type="button" onClick={onClick}>
-        <img src={alexaIcon} alt="Icone da Alexa" />
+        <img src={alexaIcon} alt="Alexa Icon" />
       </button>
     </Container>
-  );
-};
+  )
+}
 
-export default ButtonVoice;
+export default ButtonVoice
