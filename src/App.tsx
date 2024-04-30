@@ -15,11 +15,10 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition'
 
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import api from './services/api'
 
-import GlobalStyle from './styles/global'
 import { tinyStrToArray } from './utils/tinyStrToArray'
 import { MusicResponse } from './services/types'
 
@@ -151,9 +150,6 @@ function App() {
           allow="encrypted-media"
         ></iframe>
       )}
-
-      <ToastContainer />
-      <GlobalStyle />
     </Container>
   )
 }
